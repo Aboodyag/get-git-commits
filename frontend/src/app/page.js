@@ -19,7 +19,7 @@ export default function Home() {
         let allCommits = [];
         for (const folderPath of folders) {
             try {
-                const { data } = await axios.post("http://localhost:5000/get-commits", {
+                const { data } = await axios.post("/api/get-commits", {
                     folderPath,
                     email,
                 });
@@ -45,6 +45,7 @@ export default function Home() {
 
             {folders.map((folder, index) => (
                 <input
+                    type = 'folder'
                     key={index}
                     value={folder}
                     onChange={(e) => handleFolderInput(index, e.target.value)}
